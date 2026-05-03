@@ -1,11 +1,27 @@
+/**
+ * Year 3 – Theory Calculator
+ *
+ * Internal components (sum of weights = 40):
+ *   weighted_value = (obtained / max) * weight
+ *   internalTotal  = Σ weighted_value  → capped at 40
+ *
+ * External component:
+ *   externalTheory: raw marks, max 60 → added directly
+ *
+ * Final:
+ *   finalScore = internalTotal + externalTheory  → out of 100
+ */
 export const calculateTheory = (inputs) => {
+  // ── Internal fields ────────────────────────────────────────────────────────
+  // Weights must sum to 40 (internal out of 40)
   const internalFields = [
-    { key: 'assignment', max: 10, weight: 10 },
-    { key: 'attendance', max: 2, weight: 2 },
-    { key: 'mst1', max: 20, weight: 10 },
-    { key: 'mst2', max: 20, weight: 10 },
-    { key: 'quiz', max: 4, weight: 4 },
-    { key: 'surpriseTest', max: 12, weight: 4 },
+    { key: 'assignment',   max: 10, weight: 10 },
+    { key: 'attendance',   max: 2,  weight: 2  },
+    { key: 'mst1',         max: 20, weight: 10 },
+    { key: 'mst2',         max: 20, weight: 10 },
+    { key: 'quiz',         max: 4,  weight: 4  },
+    { key: 'surpriseTest', max: 12, weight: 4  },
+    // Total internal weight = 10+2+10+10+4+4 = 40 ✓
   ];
 
   let internalTotal = 0;
@@ -16,14 +32,20 @@ export const calculateTheory = (inputs) => {
     internalTotal += weighted;
   });
 
-  const externalInput = parseFloat(inputs['externalTheory']) || 0; // max 60
-  
-  const finalScore = internalTotal + externalInput;
+  // Hard cap: internal must never exceed 40
+  internalTotal = Math.min(internalTotal, 40);
+
+  // ── External field ─────────────────────────────────────────────────────────
+  // External Theory: raw marks, max 60 (no scaling needed)
+  const externalInput = parseFloat(inputs['externalTheory']) || 0;
+
+  // ── Final score ────────────────────────────────────────────────────────────
+  const finalScore = internalTotal + externalInput; // out of 100
 
   return {
     internalTotal: internalTotal.toFixed(2),
     externalTotal: externalInput.toFixed(2),
-    finalScore: finalScore.toFixed(2),
-    percentage: finalScore.toFixed(2) // out of 100
+    finalScore:    finalScore.toFixed(2),
+    percentage:    finalScore.toFixed(2),
   };
 };

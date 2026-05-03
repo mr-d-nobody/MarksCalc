@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import InputField from '../../../components/InputField';
 import ResultPanel from '../../../components/ResultPanel';
@@ -18,14 +18,10 @@ const HybridCalculator = () => {
   };
 
   const results = calculatedResults || {
-    internalTotal: '--',
+    internalTotal:  '--',
     externalScaled: '--',
-    externalTotal: '--',
-    totalWeighted: '--',
-    totalMaxWeight: '--',
-    finalOutOf70: '--',
-    finalScore: '--',
-    percentage: '--'
+    finalScore:     '--',
+    percentage:     '--',
   };
 
   const reset = useCallback(() => {
@@ -33,29 +29,28 @@ const HybridCalculator = () => {
     setCalculatedResults(null);
   }, []);
 
-  const fields = [
-    { label: 'Attendance', key: 'attendance', max: 2, weight: 2 },
-    { label: 'MST-1', key: 'mst1', max: 20, weight: 5 },
-    { label: 'MST-2', key: 'mst2', max: 20, weight: 5 },
-    { label: 'Experiment 1', key: 'exp1', max: 30, weight: 5 },
-    { label: 'Experiment 2', key: 'exp2', max: 30, weight: 5 },
-    { label: 'Experiment 3', key: 'exp3', max: 30, weight: 5 },
-    { label: 'Experiment 4', key: 'exp4', max: 30, weight: 5 },
-    { label: 'Class Performance', key: 'classPerf', max: 10, weight: 5 },
-    { label: 'End Term Practical', key: 'endTermPractical', max: 40, weight: 20 },
-    { label: 'Assignment / PBL', key: 'assignment', max: 10, weight: 2 },
-    { label: 'Quiz', key: 'quiz', max: 4, weight: 2 },
-    { label: 'Surprise Test', key: 'surpriseTest', max: 12, weight: 2 },
-    { label: 'End Term Theory', key: 'endTermTheory', max: 60, weight: 30 },
-    { label: 'Course Project', key: 'courseProject', max: 5, weight: 2 },
-    { label: 'Industry Assessment', key: 'industryAssessment', max: 10, weight: 5 },
+  const internalFields = [
+    { label: 'Attendance',            key: 'attendance',         max: 2  },
+    { label: 'MST-1',                 key: 'mst1',               max: 20 },
+    { label: 'MST-2',                 key: 'mst2',               max: 20 },
+    { label: 'Experiment 1',          key: 'exp1',               max: 30 },
+    { label: 'Experiment 2',          key: 'exp2',               max: 30 },
+    { label: 'Experiment 3',          key: 'exp3',               max: 30 },
+    { label: 'Experiment 4',          key: 'exp4',               max: 30 },
+    { label: 'Class Performance',     key: 'classPerf',          max: 10 },
+    { label: 'End Term Practical',    key: 'endTermPractical',   max: 40 },
+    { label: 'Assignment / PBL',      key: 'assignment',         max: 10 },
+    { label: 'Quiz',                  key: 'quiz',               max: 4  },
+    { label: 'Surprise Test',         key: 'surpriseTest',       max: 12 },
+    { label: 'Course Project',        key: 'courseProject',      max: 5  },
+    { label: 'Industry Assessment',   key: 'industryAssessment', max: 10 },
   ];
 
   const resultData = [
-    { label: 'Internal Marks (out of 70)', value: `${results.internalTotal || results.totalWeighted || '--'}` },
-    { label: 'External Marks (out of 30)', value: `${results.externalScaled || '--'}` },
-    { label: 'Final Score (out of 100)', value: `${results.finalScore || results.finalOutOf70 || '--'}`, highlight: true },
-    { label: 'Percentage', value: `${results.percentage || '--'}%` },
+    { label: 'Internal Marks (out of 70)', value: `${results.internalTotal}` },
+    { label: 'External Marks (out of 30)', value: `${results.externalScaled}` },
+    { label: 'Final Score (out of 100)',   value: `${results.finalScore}`, highlight: true },
+    { label: 'Percentage',                 value: `${results.percentage}%` },
   ];
 
   return (
@@ -66,9 +61,9 @@ const HybridCalculator = () => {
       className="grid grid-cols-1 lg:grid-cols-3 gap-8"
     >
       <div className="lg:col-span-2 glass-panel p-8 rounded-3xl">
-        <h3 className="text-xl font-semibold text-white mb-6">Enter Marks</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
-          {fields.map(f => (
+        <h3 className="text-xl font-semibold text-white mb-6 text-[var(--color-primary)]">Internal Marks</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 mb-8">
+          {internalFields.map(f => (
             <InputField
               key={f.key}
               label={f.label}
@@ -78,6 +73,17 @@ const HybridCalculator = () => {
             />
           ))}
         </div>
+
+        <h3 className="text-xl font-semibold text-white mb-6 text-[var(--color-secondary)] border-t border-white/10 pt-6">External Marks</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+          <InputField
+            label="End Term Theory"
+            max={60}
+            value={inputs['endTermTheory'] ?? ''}
+            onChange={(val) => handleInputChange('endTermTheory', val)}
+          />
+        </div>
+
         <button
           onClick={handleCalculate}
           disabled={!Object.values(inputs).some(v => v !== '')}

@@ -18,14 +18,10 @@ const HybridCalculator = () => {
   };
 
   const results = calculatedResults || {
-    internalTotal: '--',
+    internalTotal:  '--',
     externalScaled: '--',
-    externalTotal: '--',
-    totalWeighted: '--',
-    totalMaxWeight: '--',
-    finalOutOf70: '--',
-    finalScore: '--',
-    percentage: '--'
+    finalScore:     '--',
+    percentage:     '--',
   };
 
   const reset = useCallback(() => {
@@ -52,10 +48,10 @@ const HybridCalculator = () => {
   }));
 
   const resultData = [
-    { label: 'Internal Marks (out of 70)', value: `${results.internalTotal || results.totalWeighted || '--'}` },
-    { label: 'External Marks (out of 30)', value: `${results.externalScaled || '--'}` },
-    { label: 'Final Score (out of 100)', value: `${results.finalScore || results.finalOutOf70 || '--'}`, highlight: true },
-    { label: 'Percentage', value: `${results.percentage || '--'}%` },
+    { label: 'Internal Marks (out of 70)', value: `${results.internalTotal}` },
+    { label: 'External Marks (out of 30)', value: `${results.externalScaled}` },
+    { label: 'Final Score (out of 100)',   value: `${results.finalScore}`, highlight: true },
+    { label: 'Percentage',                 value: `${results.percentage}%` },
   ];
 
   return (
