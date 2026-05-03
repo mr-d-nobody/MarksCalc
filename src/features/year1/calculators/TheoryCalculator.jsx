@@ -88,7 +88,7 @@ const TheoryCalculator = () => {
         </button>
       </div>
       <div className="lg:col-span-1">
-        <ResultPanel title="1st Year Theory" results={resultData} onReset={reset} />
+        <ResultPanel title="2029 Passout Theory" results={resultData} onReset={reset} />
       </div>
     </motion.div>
   );

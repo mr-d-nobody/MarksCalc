@@ -84,7 +84,7 @@ const AptitudeCalculator = () => {
         </button>
       </div>
       <div className="lg:col-span-1">
-        <ResultPanel title="Aptitude" results={resultData} onReset={reset} />
+        <ResultPanel title="2028 Passout Aptitude" results={resultData} onReset={reset} />
       </div>
     </motion.div>
   );

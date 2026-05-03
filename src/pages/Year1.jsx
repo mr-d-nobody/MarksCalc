@@ -15,9 +15,9 @@ const Year1 = () => {
   return (
     <div className="py-8">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-white mb-4 text-glow">1st Year Calculator</h1>
+        <h1 className="text-4xl font-bold text-white mb-4 text-glow">2029 Passout Calculator</h1>
         <p className="text-[var(--color-text-main)] max-w-2xl mx-auto">
-          Calculate your weighted marks for 1st Year Hybrid, Theory, or Practical subjects.
+          Calculate your weighted marks for 2029 Passout Hybrid, Theory, or Practical subjects.
         </p>
       </div>
 

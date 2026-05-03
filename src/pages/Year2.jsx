@@ -16,9 +16,9 @@ const Year2 = () => {
   return (
     <div className="py-8">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-white mb-4 text-glow">2nd Year Calculator</h1>
+        <h1 className="text-4xl font-bold text-white mb-4 text-glow">2028 Passout Calculator</h1>
         <p className="text-[var(--color-text-main)] max-w-2xl mx-auto">
-          Calculate your marks for Hybrid, Theory, Practical, or Aptitude subjects.
+          Calculate your marks for 2028 Passout Hybrid, Theory, Practical, or Aptitude subjects.
         </p>
       </div>
 

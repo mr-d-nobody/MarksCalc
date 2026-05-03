@@ -20,8 +20,8 @@ const TheoryCalculator = () => {
   const results = calculatedResults || {
     internalTotal: '--',
     externalTotal: '--',
-    finalScore:    '--',
-    percentage:    '--',
+    finalScore: '--',
+    percentage: '--',
   };
 
   const reset = useCallback(() => {
@@ -41,12 +41,12 @@ const TheoryCalculator = () => {
   const resultData = [
     { label: 'Internal Marks (out of 40)', value: `${results.internalTotal}` },
     { label: 'External Marks (out of 60)', value: `${results.externalTotal}` },
-    { label: 'Final Score (out of 100)',   value: `${results.finalScore}`, highlight: true },
-    { label: 'Percentage',                 value: `${results.percentage}%` },
+    { label: 'Final Score (out of 100)', value: `${results.finalScore}`, highlight: true },
+    { label: 'Percentage', value: `${results.percentage}%` },
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
@@ -65,7 +65,7 @@ const TheoryCalculator = () => {
             />
           ))}
         </div>
-        
+
         <h3 className="text-xl font-semibold text-white mb-6 text-[var(--color-secondary)] border-t border-white/10 pt-6">External Marks</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
           <InputField
@@ -84,7 +84,7 @@ const TheoryCalculator = () => {
         </button>
       </div>
       <div className="lg:col-span-1">
-        <ResultPanel title="Theory" results={resultData} onReset={reset} />
+        <ResultPanel title="2028 Passout Theory" results={resultData} onReset={reset} />
       </div>
     </motion.div>
   );

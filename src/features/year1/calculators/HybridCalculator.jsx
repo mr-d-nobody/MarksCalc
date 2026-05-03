@@ -18,10 +18,10 @@ const HybridCalculator = () => {
   };
 
   const results = calculatedResults || {
-    internalTotal:  '--',
+    internalTotal: '--',
     externalScaled: '--',
-    finalScore:     '--',
-    percentage:     '--',
+    finalScore: '--',
+    percentage: '--',
   };
 
   const reset = useCallback(() => {
@@ -46,12 +46,12 @@ const HybridCalculator = () => {
   const resultData = [
     { label: 'Internal Marks (out of 75)', value: `${results.internalTotal}` },
     { label: 'External Marks (out of 25)', value: `${results.externalScaled}` },
-    { label: 'Final Score (out of 100)',   value: `${results.finalScore}`, highlight: true },
-    { label: 'Percentage',                 value: `${results.percentage}%` },
+    { label: 'Final Score (out of 100)', value: `${results.finalScore}`, highlight: true },
+    { label: 'Percentage', value: `${results.percentage}%` },
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
@@ -70,7 +70,7 @@ const HybridCalculator = () => {
             />
           ))}
         </div>
-        
+
         <h3 className="text-xl font-semibold text-white mb-6 text-[var(--color-secondary)] border-t border-white/10 pt-6">External Marks</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
           <InputField
@@ -89,7 +89,7 @@ const HybridCalculator = () => {
         </button>
       </div>
       <div className="lg:col-span-1">
-        <ResultPanel title="1st Year Hybrid" results={resultData} onReset={reset} />
+        <ResultPanel title="2029 Passout Hybrid" results={resultData} onReset={reset} />
       </div>
     </motion.div>
   );

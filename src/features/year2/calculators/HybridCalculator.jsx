@@ -18,10 +18,10 @@ const HybridCalculator = () => {
   };
 
   const results = calculatedResults || {
-    internalTotal:  '--',
+    internalTotal: '--',
     externalScaled: '--',
-    finalScore:     '--',
-    percentage:     '--',
+    finalScore: '--',
+    percentage: '--',
   };
 
   const reset = useCallback(() => {
@@ -30,31 +30,31 @@ const HybridCalculator = () => {
   }, []);
 
   const internalFields = [
-    { label: 'Attendance',            key: 'attendance',         max: 2  },
-    { label: 'MST-1',                 key: 'mst1',               max: 20 },
-    { label: 'MST-2',                 key: 'mst2',               max: 20 },
-    { label: 'Experiment 1',          key: 'exp1',               max: 30 },
-    { label: 'Experiment 2',          key: 'exp2',               max: 30 },
-    { label: 'Experiment 3',          key: 'exp3',               max: 30 },
-    { label: 'Experiment 4',          key: 'exp4',               max: 30 },
-    { label: 'Class Performance',     key: 'classPerf',          max: 10 },
-    { label: 'End Term Practical',    key: 'endTermPractical',   max: 40 },
-    { label: 'Assignment / PBL',      key: 'assignment',         max: 10 },
-    { label: 'Quiz',                  key: 'quiz',               max: 4  },
-    { label: 'Surprise Test',         key: 'surpriseTest',       max: 12 },
-    { label: 'Course Project',        key: 'courseProject',      max: 5  },
-    { label: 'Industry Assessment',   key: 'industryAssessment', max: 10 },
+    { label: 'Attendance', key: 'attendance', max: 2 },
+    { label: 'MST-1', key: 'mst1', max: 20 },
+    { label: 'MST-2', key: 'mst2', max: 20 },
+    { label: 'Experiment 1', key: 'exp1', max: 30 },
+    { label: 'Experiment 2', key: 'exp2', max: 30 },
+    { label: 'Experiment 3', key: 'exp3', max: 30 },
+    { label: 'Experiment 4', key: 'exp4', max: 30 },
+    { label: 'Class Performance', key: 'classPerf', max: 10 },
+    { label: 'End Term Practical', key: 'endTermPractical', max: 40 },
+    { label: 'Assignment / PBL', key: 'assignment', max: 10 },
+    { label: 'Quiz', key: 'quiz', max: 4 },
+    { label: 'Surprise Test', key: 'surpriseTest', max: 12 },
+    { label: 'Course Project', key: 'courseProject', max: 5 },
+    { label: 'Industry Assessment', key: 'industryAssessment', max: 10 },
   ];
 
   const resultData = [
     { label: 'Internal Marks (out of 70)', value: `${results.internalTotal}` },
     { label: 'External Marks (out of 30)', value: `${results.externalScaled}` },
-    { label: 'Final Score (out of 100)',   value: `${results.finalScore}`, highlight: true },
-    { label: 'Percentage',                 value: `${results.percentage}%` },
+    { label: 'Final Score (out of 100)', value: `${results.finalScore}`, highlight: true },
+    { label: 'Percentage', value: `${results.percentage}%` },
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
@@ -93,7 +93,7 @@ const HybridCalculator = () => {
         </button>
       </div>
       <div className="lg:col-span-1">
-        <ResultPanel title="Hybrid" results={resultData} onReset={reset} />
+        <ResultPanel title="2028 Passout Hybrid" results={resultData} onReset={reset} />
       </div>
     </motion.div>
   );

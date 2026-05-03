@@ -48,7 +48,7 @@ const PracticalCalculator = () => {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
@@ -67,7 +67,7 @@ const PracticalCalculator = () => {
             />
           ))}
         </div>
-        
+
         <h3 className="text-xl font-semibold text-white mb-6 text-[var(--color-secondary)] border-t border-white/10 pt-6">External Marks</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
           <InputField
@@ -86,7 +86,7 @@ const PracticalCalculator = () => {
         </button>
       </div>
       <div className="lg:col-span-1">
-        <ResultPanel title="1st Year Practical" results={resultData} onReset={reset} />
+        <ResultPanel title="2029 Passout Practical" results={resultData} onReset={reset} />
       </div>
     </motion.div>
   );
