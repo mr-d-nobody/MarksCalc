@@ -6,10 +6,10 @@
  *   internalTotal  = Σ weighted_value  → capped at 40
  *
  * External component:
- *   external: raw marks, max 60 → added directly
+ *   external: raw marks, max 160 → scaled to 60 before adding to internal
  *
  * Final:
- *   finalScore = internalTotal + external  → out of 100
+ *   finalScore = internalTotal + externalScaled  → out of 100
  */
 export const calculateAptitude = (inputs) => {
   // ── Internal fields ────────────────────────────────────────────────────────
@@ -36,15 +36,17 @@ export const calculateAptitude = (inputs) => {
   internalTotal = Math.min(internalTotal, 40);
 
   // ── External field ─────────────────────────────────────────────────────────
-  // External Theory: raw marks, max 60 (no scaling needed)
-  const external = parseFloat(inputs['external']) || 0;
+  // External Theory: raw marks, max 160, scaled to 60 before adding to internal
+  const externalRaw = parseFloat(inputs['external']) || 0;
+  const externalCapped = Math.min(externalRaw, 160);
+  const externalScaled = (externalCapped / 160) * 60;
 
   // ── Final score ────────────────────────────────────────────────────────────
-  const finalScore = internalTotal + external; // out of 100
+  const finalScore = internalTotal + externalScaled; // out of 100
 
   return {
     internalTotal: internalTotal.toFixed(2),
-    externalTotal: external.toFixed(2),
+    externalTotal: externalScaled.toFixed(2),
     finalScore:    finalScore.toFixed(2),
     percentage:    finalScore.toFixed(2),
   };
